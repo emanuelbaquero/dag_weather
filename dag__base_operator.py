@@ -44,9 +44,13 @@ with DAG('dag__base_operator',
 
     t_CheckPipelineStatus = CheckPipelineStatus(task_id='t_CheckPipelineStatus', adf='dftdptdldev-core01', resource_group='RG-TDP-TDL-DEV')
 
-    end = BashOperator(task_id='end',bash_command='echo prueba_bash')
+    if t_CheckPipelineStatus
+        end = BashOperator(task_id='end',bash_command='echo prueba_bash')
+        start >> t_HelloOperator >> actualizar_activity_runs >> t_CheckPipelineStatus >> end
+    else:
+        start >> t_HelloOperator >> actualizar_activity_runs >> t_CheckPipelineStatus
 
-    start >> t_HelloOperator >> actualizar_activity_runs >> t_CheckPipelineStatus >> end
+
 
 
 
