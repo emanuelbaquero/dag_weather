@@ -35,4 +35,4 @@ with DAG('dag_execute_adf_data_quality',
 
 
 
-start >> prueba_bash
+start >> actualizar_activity_runs
