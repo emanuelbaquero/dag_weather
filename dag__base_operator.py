@@ -14,7 +14,9 @@ from airflow.operators.dummy_operator import DummyOperator
 from airflow.operators.python_operator import PythonOperator
 from airflow.operators.bash_operator import BashOperator
 from airflow.utils.dates import days_ago
-from accenture_operators import ExecutePipeline, CheckPipelineStatus
+from accenture_operators import ExecutePipeline
+from accenture_validations import CheckPipelineStatus
+
 import time
 
 
